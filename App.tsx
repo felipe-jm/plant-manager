@@ -8,7 +8,7 @@ import {
   Jost_600SemiBold,
 } from "@expo-google-fonts/jost";
 
-import UserIdentification from "./src/screens/UserIdentification";
+import { UserIdentification } from "./src/screens/UserIdentification";
 
 const App = () => {
   const [fontsLoaded] = useFonts({

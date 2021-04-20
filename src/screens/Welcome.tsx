@@ -16,7 +16,7 @@ import wateringImage from "../assets/watering.png";
 import colors from "../styles/colors";
 import fonts from "../styles/fonts";
 
-const Welcome = () => (
+export const Welcome = () => (
   <SafeAreaView style={styles.container}>
     <View style={styles.wrapper}>
       <Text style={styles.title}>
@@ -86,5 +86,3 @@ const styles = StyleSheet.create({
     color: colors.white,
   },
 });
-
-export default Welcome;
