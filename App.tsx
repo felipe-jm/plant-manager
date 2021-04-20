@@ -8,7 +8,7 @@ import {
   Jost_600SemiBold,
 } from "@expo-google-fonts/jost";
 
-import { UserIdentification } from "./src/screens/UserIdentification";
+import Routes from "./src/routes";
 
 const App = () => {
   const [fontsLoaded] = useFonts({
@@ -18,7 +18,7 @@ const App = () => {
 
   if (!fontsLoaded) return <AppLoading />;
 
-  return <UserIdentification />;
+  return <Routes />;
 };
 
 export default App;
