@@ -1,27 +1,36 @@
 import React from "react";
 import { SafeAreaView, View, Text, StyleSheet } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 
 import { Button } from "../components/Button";
 import colors from "../styles/colors";
 import fonts from "../styles/fonts";
 
-export const Confirmation = () => (
-  <SafeAreaView style={styles.container}>
-    <View style={styles.content}>
-      <Text style={styles.emoji}>😄</Text>
+export const Confirmation = () => {
+  const navigation = useNavigation();
 
-      <Text style={styles.title}>Prontinho</Text>
+  function handleMoveOn() {
+    navigation.navigate("PlantsSelection");
+  }
 
-      <Text style={styles.subtitle}>
-        Agora vamos começar a cuidar das suas plantinhas com muito cuidado
-      </Text>
+  return (
+    <SafeAreaView style={styles.container}>
+      <View style={styles.content}>
+        <Text style={styles.emoji}>😄</Text>
 
-      <View style={styles.footer}>
-        <Button title="Começar" />
+        <Text style={styles.title}>Prontinho</Text>
+
+        <Text style={styles.subtitle}>
+          Agora vamos começar a cuidar das suas plantinhas com muito cuidado
+        </Text>
+
+        <View style={styles.footer}>
+          <Button title="Começar" onPress={handleMoveOn} />
+        </View>
       </View>
-    </View>
-  </SafeAreaView>
-);
+    </SafeAreaView>
+  );
+};
 
 const styles = StyleSheet.create({
   container: {
