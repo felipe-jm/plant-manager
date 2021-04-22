@@ -8,6 +8,8 @@ import { Confirmation } from "../screens/Confirmation";
 import { PlantsSelection } from "../screens/PlantsSelection";
 
 import colors from "../styles/colors";
+import { PlantSave } from "../screens/PlantSave";
+import { MyPlants } from "../screens/MyPlants";
 
 const StackRoutes = createStackNavigator();
 
@@ -30,6 +32,10 @@ const AppRoutes = () => (
     <StackRoutes.Screen name="Confirmation" component={Confirmation} />
 
     <StackRoutes.Screen name="PlantsSelection" component={PlantsSelection} />
+
+    <StackRoutes.Screen name="PlantSave" component={PlantSave} />
+
+    <StackRoutes.Screen name="MyPlants" component={MyPlants} />
   </StackRoutes.Navigator>
 );
 

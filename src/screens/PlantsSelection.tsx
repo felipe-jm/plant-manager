@@ -6,36 +6,23 @@ import {
   FlatList,
   ActivityIndicator,
 } from "react-native";
-import { EnvironmentButton } from "../components/EnvironmentButton";
+import { useNavigation } from "@react-navigation/native";
 
 import { Header } from "../components/Header";
 import { PlantCardPrimary } from "../components/PlantCardPrimary";
 import { Loading } from "../components/Loading";
+import { EnvironmentButton } from "../components/EnvironmentButton";
 
 import colors from "../styles/colors";
 import fonts from "../styles/fonts";
 
 import { api } from "../services/api";
 
-type Environment = {
-  key: string;
-  title: string;
-};
-
-type Plant = {
-  id: string;
-  name: string;
-  about: string;
-  water_tips: string;
-  photo: string;
-  environments: string[];
-  frequency: {
-    times: number;
-    repeat_every: string;
-  };
-};
+import { Environment, Plant } from "../types";
 
 export const PlantsSelection = () => {
+  const navigation = useNavigation();
+
   const [environments, setEnvironments] = useState<Environment[]>([]);
   const [plants, setPlants] = useState<Plant[]>([]);
 
@@ -124,6 +111,10 @@ export const PlantsSelection = () => {
     setFilteredPlants(filtered);
   }
 
+  function handlePlantSelect(plant: Plant) {
+    navigation.navigate("PlantSave", { plant });
+  }
+
   if (loading) {
     return <Loading />;
   }
@@ -158,7 +149,12 @@ export const PlantsSelection = () => {
         <FlatList
           data={filteredPlants}
           keyExtractor={(plant) => String(plant.id)}
-          renderItem={({ item: plant }) => <PlantCardPrimary plant={plant} />}
+          renderItem={({ item: plant }) => (
+            <PlantCardPrimary
+              plant={plant}
+              onPress={() => handlePlantSelect(plant)}
+            />
+          )}
           showsVerticalScrollIndicator={false}
           numColumns={2}
           onEndReachedThreshold={0.1}
