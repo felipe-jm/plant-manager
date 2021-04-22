@@ -24,14 +24,16 @@ export const MyPlants = () => {
     async function loadStoragedPlants() {
       const plantsStoraged = await loadPlants();
 
+      const [firstPlant] = plantsStoraged;
+
       const nextTime = formatDistance(
-        new Date(plantsStoraged[0].dateTimeNotification.getTime()),
+        new Date(firstPlant.dateTimeNotification).getTime(),
         new Date().getTime(),
         { locale: pt }
       );
 
       setNextWatered(
-        `Não esqueça de regar a ${plantsStoraged[0]} á ${nextTime} horas`
+        `Não esqueça de regar a ${firstPlant.name} à ${nextTime} horas`
       );
 
       setMyPlants(plantsStoraged);
@@ -55,7 +57,7 @@ export const MyPlants = () => {
 
         <FlatList
           data={myPlants}
-          keyExtractor={(plant) => plant.id}
+          keyExtractor={(plant) => String(plant.id)}
           renderItem={({ item: plant }) => <PlantCardSecondary plant={plant} />}
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ flex: 1 }}
@@ -92,7 +94,7 @@ const styles = StyleSheet.create({
 
   spotlightText: {
     flex: 1,
-    color: colors.blue_light,
+    color: colors.blue,
     paddingHorizontal: 20,
   },
 
