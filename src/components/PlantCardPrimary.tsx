@@ -16,7 +16,7 @@ type PlantCardPrimaryProps = {
 } & RectButtonProperties;
 
 export const PlantCardPrimary = ({ plant, ...rest }: PlantCardPrimaryProps) => (
-  <RectButton style={styles.container}>
+  <RectButton style={styles.container} {...rest}>
     <SvgFromUri uri={plant.photo} width={70} height={70} />
     <Text style={styles.text}>{plant.name}</Text>
   </RectButton>
