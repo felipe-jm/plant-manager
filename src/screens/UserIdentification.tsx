@@ -14,6 +14,8 @@ import {
 
 import { useNavigation } from "@react-navigation/native";
 
+import AsyncStorage from "@react-native-async-storage/async-storage";
+
 import { Button } from "../components/Button";
 
 import colors from "../styles/colors";
@@ -40,10 +42,12 @@ export const UserIdentification = () => {
     setIsFilled(!!value);
   }
 
-  function handleSubmit() {
+  async function handleSubmit() {
     if (!name) {
       return Alert.alert("Me diga como chamar você 😔");
     }
+
+    await AsyncStorage.setItem("@plantmanager:user", name);
 
     navigation.navigate("Confirmation");
   }
