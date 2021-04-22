@@ -5,11 +5,12 @@ import { Welcome } from "../screens/Welcome";
 
 import { UserIdentification } from "../screens/UserIdentification";
 import { Confirmation } from "../screens/Confirmation";
-import { PlantsSelection } from "../screens/PlantsSelection";
+
+import { PlantSave } from "../screens/PlantSave";
+
+import { AuthRoutes } from "./tab.routes";
 
 import colors from "../styles/colors";
-import { PlantSave } from "../screens/PlantSave";
-import { MyPlants } from "../screens/MyPlants";
 
 const StackRoutes = createStackNavigator();
 
@@ -31,11 +32,11 @@ const AppRoutes = () => (
 
     <StackRoutes.Screen name="Confirmation" component={Confirmation} />
 
-    <StackRoutes.Screen name="PlantsSelection" component={PlantsSelection} />
+    <StackRoutes.Screen name="PlantsSelection" component={AuthRoutes} />
 
     <StackRoutes.Screen name="PlantSave" component={PlantSave} />
 
-    <StackRoutes.Screen name="MyPlants" component={MyPlants} />
+    <StackRoutes.Screen name="MyPlants" component={AuthRoutes} />
   </StackRoutes.Navigator>
 );
 
