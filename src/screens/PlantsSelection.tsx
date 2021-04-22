@@ -47,7 +47,6 @@ export const PlantsSelection = () => {
 
   const [page, setPage] = useState(1);
   const [loadingMore, setLoadingMore] = useState(false);
-  const [loadedAll, setLoadedAll] = useState(false);
 
   useEffect(() => {
     async function fetchEnviroment() {
@@ -141,9 +140,9 @@ export const PlantsSelection = () => {
       <View>
         <FlatList
           data={environments}
+          keyExtractor={(enviroment) => String(enviroment.key)}
           renderItem={({ item: enviroment }) => (
             <EnvironmentButton
-              key={enviroment.key}
               title={enviroment.title}
               active={enviroment.key === enviromentSelected}
               onPress={() => handleEnvironmentSelect(enviroment.key)}
@@ -158,6 +157,7 @@ export const PlantsSelection = () => {
       <View style={styles.plants}>
         <FlatList
           data={filteredPlants}
+          keyExtractor={(plant) => String(plant.id)}
           renderItem={({ item: plant }) => <PlantCardPrimary plant={plant} />}
           showsVerticalScrollIndicator={false}
           numColumns={2}
