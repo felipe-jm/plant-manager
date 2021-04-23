@@ -7,6 +7,10 @@
   An mobile app to manage when to water your plants :seedling:
 </h4>
 
+<p align="center">
+  <img src="./app.gif" height="600" />
+</p>
+
 ## :information_source: How To Use
 
 ```bash
@@ -14,9 +18,14 @@ git clone https://github.com/felipe-jm/plant-manager.git
 
 cd plant-manager
 
+# Install dependencies
 yarn
 
-expo start
+# Start the json server
+yarn serve
+
+# Start the app
+yarn start
 ```
 
 ## :memo: License
