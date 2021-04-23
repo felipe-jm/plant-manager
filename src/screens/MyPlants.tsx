@@ -5,15 +5,17 @@ import { formatDistance } from "date-fns/esm";
 import { pt } from "date-fns/locale";
 
 import { Header } from "../components/Header";
+import { PlantCardSecondary } from "../components/PlantCardSecondary";
+import { Loading } from "../components/Loading";
 
 import colors from "../styles/colors";
+import fonts from "../styles/fonts";
 
 import waterDrop from "../assets/waterdrop.png";
 
 import { Plant } from "../types";
+
 import { loadPlants } from "../libs/storage";
-import fonts from "../styles/fonts";
-import { PlantCardSecondary } from "../components/PlantCardSecondary";
 
 export const MyPlants = () => {
   const [myPlants, setMyPlants] = useState<Plant[]>([]);
@@ -42,6 +44,10 @@ export const MyPlants = () => {
 
     loadStoragedPlants();
   }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <View style={styles.container}>
