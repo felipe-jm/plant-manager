@@ -3,7 +3,7 @@ import { format } from "date-fns";
 
 import { Plant } from "../types";
 
-type StoragePlantProps = {
+export type StoragePlantProps = {
   [id: string]: {
     data: Plant;
   };
@@ -53,4 +53,13 @@ export async function loadPlants(): Promise<Plant[]> {
   } catch (error) {
     throw new Error(error);
   }
+}
+
+export async function removePlant(id: string): Promise<void> {
+  const data = await AsyncStorage.getItem("@plantmanager:plants");
+  const plants = data ? (JSON.parse(data) as StoragePlantProps) : {};
+
+  delete plants[id];
+
+  await AsyncStorage.setItem("@plantmanager:plants", JSON.stringify(plants));
 }
